@@ -8,6 +8,7 @@ $(document).ready(function() {
         messagingSenderId: "559070008227",
         appId: "1:559070008227:web:46260a44be58da85"
     }
+
     firebase.initializeApp(firebaseConfig);
 
     var database = firebase.database()
@@ -17,63 +18,76 @@ $(document).ready(function() {
     var yourWins=0
     var elseWins=0
     var ties =0
+
     $("#click-button").on("click", function(event) {
         event.preventDefault()
         name = $("#name-input").val().trim()
         choice = $("input:radio[name=choice]:checked").val()
         comment = $("#comment-input").val().trim()
-        //var yourchoice = $("<p>")
-        //yourchoice.text(name + " chose " + choice)
-        //$("#currentmatch").append(yourchoice)
-        //var yourcomment = $("<p>")
-        //yourcomment.text(name + " said " + comment)
-        //$("#currentmatch").append(yourcomment)
+        var yourcomment = $("<p>")
+        yourcomment.text(name + " said " + comment)
+        $("#messageboard").append(yourcomment)
 
         database.ref().set({
             name: name,
             choice: choice,
-            comment: comment,
-            yourWins: yourWins,
-            elseWins: elseWins,
-            ties: ties
+            comment: comment
         })  
     })
+    
     database.ref().on("value", function(snapshot) {
-        console.log(snapshot.val())
-        console.log(snapshot.val().name)
-        console.log(snapshot.val().choice)
         var csv = snapshot.val()
         var elsename = csv.name
         var elsechoice = csv.choice
         var elsecomment = csv.comment
-        //var elsechoicedisp = $("<p>")
-        //elsechoicedisp.text(elsename + " chose " + elsechoice)
-       // $("#currentmatch").append(elsechoicedisp)
+
+       if (elsename != name && csv !=null && name !="") {
         var elsecommentDisp = $("<p>")
         elsecommentDisp.text(elsename + " said " + elsecomment)
-        $("#currentmatch").append(elsecommentDisp)
-
+        $("#messageboard").append(elsecommentDisp)
+        var choiceComment = $("<p>")
+            choiceComment.text(name + " chose " + choice + " and " + elsename + " chose " + elsechoice)
+            $("#messageboard").append(choiceComment)
 
         if ((choice === "rock" && elsechoice === "scissors") ||
           (choice  === "scissors" && elsechoice === "paper") || 
           (choice  === "paper" && elsechoice === "rock")) {
-            yourWins++;
+            yourWins++
+            var winComment = $("<p>")
+            winComment.text(name + " wins this round!")
+            $("#messageboard").append(winComment)
+
         } else if (choice === elsechoice) {
-          ties++;
+          ties++
+          var tieComment = $("<p>")
+            tieComment.text("It's a tie! Keep going!")
+            $("#messageboard").append(tieComment)
+
         } else {
-          elseWins++;
+          elseWins++
+          var looseComment = $("<p>")
+            looseComment.text(name + " lost... " + elsename + " wins this round!")
+            $("#messageboard").append(looseComment)
         }
 
         $("#yourWins").text("Your wins: " + yourWins)
         $("#elseWins").text("Somebody elses wins: " + elseWins)
         $("#ties").text("Tied up: " + ties)
+    }
+
+    else {
+        var nobodyhereComment = $("<p>")
+            nobodyhereComment.text("Hey "+ name + " wait for the partner!")
+            $("#messageboard").append(nobodyhereComment)
+    }
         
-
-    //database.ref().remove()
-
     }, function(errorObject) {
         console.log("The read failed: " + errorObject.code)
     })
 
+    $("#clearmessage").on("click", function(event) {
+        event.preventDefault()
+        $("#messageboard").empty()
+    })
 
 })
