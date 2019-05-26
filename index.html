@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rock, Paper, Scissors!</title>
+    <link rel="stylesheet" type="text/css" href="assets/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase.js"></script>
 </head>
 <body>
-    <h1>Exciting game of Rock, Paper, Scissors!</h1>
-    <h2>Now with real human opponent!</h2>
-    <h3>If you will find one...</h3>
+<div class="jumbotron">
+    <div id="headers">
+        <h1>Exciting game of Rock, Paper, Scissors!</h1>
+        <h2>Now with real human opponent!</h2>
+        <h3>If you will find one...</h3>
+    </div>
     <div id="userinputpart">
         <label for="name-input">Tell the game your name. Or lie about it. No one cares.</label>
         <input class="form-control" id="name-input" type="text">
@@ -23,13 +28,13 @@
         <label for="comment-input">Word of advice to your opponent?</label>
         <br>
         <textarea class="form-control" id="comment-input" rows="5"></textarea>
-        <br> <br>
+        <br>
         <button id="click-button" type="submit">Submit</button>
     </div>
     <br>
+    <button id="clearmessage" type="submit">&dArr; Clear this mess! &dArr;</button>
     <div id="messageboard">
     </div>
-    <button id="clearmessage" type="submit">Clear this mess!</button>
     <br>
     <div id="gamestats">
         <p id="yourWins"></p>
@@ -39,6 +44,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/app.js"></script>
-
+</div>
 </body>
 </html>

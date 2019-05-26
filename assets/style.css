@@ -1,0 +1,64 @@
+#headers {
+    text-align: center;
+    margin: 10px 10px 10px 350px;
+    width: 50%;
+    background-color: rgb(85, 223, 85);
+    padding: 20px 10px 20px 10px;
+    font-family: 'Georgia', Times, serif;
+    font-weight: bold;
+    line-height: 1.5;
+    color: rgb(7, 2, 71);
+}
+h1 {
+    font-size: 25px;
+}
+h2 {
+    font-size: 20px;
+}
+h3 {
+    font-size: 18px;
+}
+#userinputpart {
+    text-align: center;
+    margin: 10px 10px 10px 350px;
+    width: 50%;
+    background-color: rgb(177, 253, 177);
+    padding: 20px 10px 20px 10px;
+    font-family: 'Georgia', Times, serif;
+    line-height: 1.5;
+    color: rgb(17, 11, 99);
+    font-size: 18px;
+}
+#clearmessage {
+    margin: 5px 5px 5px 685px;
+}
+#messageboard {
+    text-align: center;
+    margin: 5px 5px 5px 500px;
+    width: 30%;
+    background-color: rgb(222, 252, 222);
+    padding: 10px 10px 10px 10px;
+    font-family: 'Georgia', Times, serif;
+    line-height: 1.5;
+    color: rgb(17, 11, 99);
+    font-size: 14px;
+    border: 2px solid black;
+}
+#gamestats {
+    text-align: center;
+    margin: 10px 10px 10px 350px;
+    width: 50%;
+    background-color: rgb(177, 253, 177);
+    padding: 20px 10px 20px 10px;
+    font-family: 'Georgia', Times, serif;
+    line-height: 1.5;
+    color: rgb(17, 11, 99);
+    font-size: 18px;
+}
+.jumbotron {
+    background-color: #007535;
+    background-image: linear-gradient(rgb(3, 85, 40), rgb(175, 252, 165));
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
